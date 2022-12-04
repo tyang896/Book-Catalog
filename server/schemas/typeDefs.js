@@ -1,7 +1,6 @@
 const { gql } = require('apollo-server-express');
 
 //TODO: Add code for saveBook() Mutation
-//TODO: Add code for bookId, authors, image, and link in Book type
 const typeDefs = gql`
     type User {
         _id: ID
@@ -11,13 +10,12 @@ const typeDefs = gql`
     }
 
     type Book {
-        bookId: ID//NOTE: Change the ID value to what is returned from Google Books API
+        bookId: String
         authors: [String]
         description: String
         title: String
-        image:
-        link:
-
+        image: String
+        link: String
     }
 
     type Auth {
