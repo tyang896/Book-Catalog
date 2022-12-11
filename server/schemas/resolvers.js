@@ -13,8 +13,8 @@ const resolvers = {
         }
     },
     Mutation: {
-        addUser: async (parent, {username, email, password}) => {
-            const user = await User.create({ username, email, password });
+        addUser: async (parent, args) => {
+            const user = await User.create(args);
             const token = signToken(user);
             return { token, user};
         },
@@ -25,14 +25,13 @@ const resolvers = {
                 throw new AuthenticationError('No user with this email found!');
             }
 
-            const correctPw = await user.isCorrectPassword(password);
+            const correctPassword = await user.isCorrectPassword(password);
 
-            if(!correctPw) {
+            if(!correctPassword) {
                 throw new AuthenticationError('Incorrect password');
             }
-            console.log(user);
             const token = signToken(user);
-            return (token, user);
+            return {token, user};
         },
         saveBook: async (parent, { input }, context) => {
             if(context.user) {
@@ -47,7 +46,7 @@ const resolvers = {
         },
         removeBook: async (parent, { bookId }, context) => {
             if(context.user) {
-                const updatedUser = await User.findOneUpdate(
+                const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
                     { $pull: { savedBooks: { bookId: bookId }}},
                     { new: true }
