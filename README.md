@@ -15,7 +15,7 @@ In order to run the application, run `npm run develop` from the root of the repo
 
 ![Screenshot](./Screenshot%202022-12-10%20at%2021-16-18%20Google%20Book%20Search.png)
 
-Users can search for books. However, in order to save a book, users will have to sign up first. To see a live demonstration, you can view it here: 
+Users can search for books. However, in order to save a book, users will have to sign up first. To see a live demonstration, you can view it here: https://murmuring-badlands-42859.herokuapp.com/
 
 
 
