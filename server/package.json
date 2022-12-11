@@ -8,8 +8,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "watch": "nodemon server.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "watch": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
